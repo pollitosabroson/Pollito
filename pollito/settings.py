@@ -161,3 +161,19 @@ LOGGING = {
         },
     }
 }
+import dj_database_url
+import os
+
+if bool(os.environ.get('LOCAL_DEV', False)): 
+  DATABASES = {
+      'default' : {
+         'ENGINE' : 'django.db.backends.mysql',
+         'NAME' : 'blog_db',
+         'USER': 'root',
+        'PASSWORD': '123',
+      }
+  } 
+else: 
+  DATABASES = {
+      'default' : dj_database_url.config(default='mysql://localhost')
+  }
