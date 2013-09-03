@@ -16,10 +16,10 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'blog_db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'pictures',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'root',
+        'USER': 'pollo',
         'PASSWORD': '123',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
@@ -161,19 +161,3 @@ LOGGING = {
         },
     }
 }
-import dj_database_url
-import os
-
-if bool(os.environ.get('LOCAL_DEV', False)): 
-  DATABASES = {
-      'default' : {
-         'ENGINE' : 'django.db.backends.mysql',
-         'NAME' : 'blog_db',
-         'USER': 'root',
-        'PASSWORD': '123',
-      }
-  } 
-else: 
-  DATABASES = {
-      'default' : dj_database_url.config(default='mysql://localhost')
-  }
